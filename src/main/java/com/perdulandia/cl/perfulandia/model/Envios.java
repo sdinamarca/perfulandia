@@ -14,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Envios {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPedido;
