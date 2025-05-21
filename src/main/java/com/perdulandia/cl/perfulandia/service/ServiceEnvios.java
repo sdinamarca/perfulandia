@@ -1,7 +1,7 @@
 package com.perdulandia.cl.perfulandia.service;
 
 import com.perdulandia.cl.perfulandia.model.Envios;
-import com.perdulandia.cl.perfulandia.repository.EnvioRepository;
+import com.perdulandia.cl.perfulandia.repository.EnviosRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,25 +13,25 @@ import java.util.List;
 public class ServiceEnvios {
 
     @Autowired
-    private EnvioRepository envioRepository;
+    private EnviosRepository enviosRepository;
 
     public List<Envios> findAll(){
 
-        return envioRepository.findAll();
+        return enviosRepository.findAll();
     }
 
-    public Envios findById(long id){
+    public Envios findById(long idPedido){
 
-        return envioRepository.findById(idPedido).get();
+        return enviosRepository.findById(idPedido).get();
     }
 
     public Envios save(Envios envios) {
 
-        return envioRepository.save(envios);
+        return enviosRepository.save(envios);
     }
 
-    public void delete(Long id) {
+    public void delete(Long idPedidos) {
 
-        envioRepository.deleteById(idPedidos);
+        enviosRepository.deleteById(idPedidos);
     }
 }
