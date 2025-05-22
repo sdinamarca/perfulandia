@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ServicePedidoProveedor {
+public class ServicePedidoProveedor{
 
     @Autowired
     private PedidoProveedorRepository pPRepository;
