@@ -14,9 +14,10 @@ import java.util.Date;
 @AllArgsConstructor
 public class Envios {
 
-
-    @Column(name = "num_pedido", nullable = false, unique = true)
-    private String numPedido;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedido", nullable = false, unique = true)
+    private Long idPedido;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_envio")
