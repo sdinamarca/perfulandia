@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedidoprovedor {
+public class Pedidoproveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,6 @@ public class Pedidoprovedor {
 
     @ManyToOne
     @JoinColumn(name = "idProvedor", nullable = false)
-    private Provedor proveedor;
+    private Proveedor proveedor;
 
 }

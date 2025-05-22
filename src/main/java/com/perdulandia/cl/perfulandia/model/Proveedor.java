@@ -5,18 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @Entity
 @Table(name = "proveedor")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Provedor {
+public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_provedor")
-    private Long idProvedor;
+    @Column(name = "id_proveedor")
+    private Long idProveedor;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
