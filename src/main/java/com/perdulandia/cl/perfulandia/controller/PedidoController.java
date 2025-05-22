@@ -5,7 +5,7 @@ import com.perdulandia.cl.perfulandia.service.ServicePedidoProveedor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import com.perdulandia.cl.perfulandia.repository.PedidoProveedorRepository;
 import java.util.List;
 
 @RestController
@@ -14,6 +14,9 @@ public class PedidoController {
 
     @Autowired
     private ServicePedidoProveedor servicePedidoProveedor;
+
+    @Autowired
+    private PedidoProveedorRepository pedidoProveedorRepository;
 
 
     // GET: Listar todos los pedidos de proveedor
@@ -49,6 +52,16 @@ public class PedidoController {
 
             servicePedidoProveedor.save(existente);
             return ResponseEntity.ok(existente);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/{numPedido}")
+    public ResponseEntity<Pedidoproveedor> buscarPorNumPedido(@PathVariable String numPedido) {
+        try {
+            Pedidoproveedor pedido = pedidoProveedorRepository.findByNumPedido(numPedido);
+            return ResponseEntity.ok(pedido);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
