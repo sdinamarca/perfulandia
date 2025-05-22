@@ -1,11 +1,15 @@
 package com.perdulandia.cl.perfulandia.repository;
 
+import com.perdulandia.cl.perfulandia.model.Envios;
 import com.perdulandia.cl.perfulandia.model.Pedidoproveedor;
-import com.perdulandia.cl.perfulandia.model.Proveedor;
+import com.perdulandia.cl.perfulandia.model.Pedidoproveedor;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public interface PedidoProveedorRepository extends JpaRepository<Pedidoproveedor, Long> {
 
-    Pedidoproveedor findByNumPedido(String numPedido);
+    List<Pedidoproveedor> findByFechaPedido(LocalDate fechaPedido);
 
 }
