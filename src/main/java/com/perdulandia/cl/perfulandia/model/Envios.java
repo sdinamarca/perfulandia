@@ -23,7 +23,7 @@ public class Envios{
     @Column(name = "fecha_envio")
     private Date fechaEnvio;
 
-    @Column(name = "nombre_pedido", nullable = false, length = 100)
+    @Column(name = "nombre_pedido", nullable = false, length = 50)
     private String nombrePedido;
 
     @Column(name = "seguimiento", length = 100)
@@ -31,5 +31,8 @@ public class Envios{
 
     @Column(name = "direccion", nullable = false, length = 200)
     private String direccion;
+
+    @Column(name = "estado", length = 30)
+    private String estado;//(procesando, enviado, entregado)
 
 }
