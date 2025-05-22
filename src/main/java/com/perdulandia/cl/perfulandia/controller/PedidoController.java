@@ -15,6 +15,7 @@ public class PedidoController {
     @Autowired
     private ServicePedidoProveedor servicePedidoProveedor;
 
+
     // GET: Listar todos los pedidos de proveedor
     @GetMapping
     public ResponseEntity<List<Pedidoproveedor>> listar() {

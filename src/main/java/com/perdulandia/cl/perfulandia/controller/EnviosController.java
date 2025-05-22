@@ -5,16 +5,22 @@ import com.perdulandia.cl.perfulandia.service.ServiceEnvios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.Date;
 import java.util.List;
-
+import com.perdulandia.cl.perfulandia.repository.EnviosRepository;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 @RestController
 @RequestMapping("/api/v1/envios")
 public class EnviosController {
 
     @Autowired
     private ServiceEnvios serviceEnvios;
+    @Autowired
+    private EnviosRepository enviosRepository;
+
 
     @GetMapping
     public ResponseEntity<List<Envios>> listar() {
@@ -56,6 +62,39 @@ public class EnviosController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/envios/fecha/{fechaEnvio}")
+    public ResponseEntity<List<Envios>> buscarPorFecha(
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEnvio) {
+        try {
+            List<Envios> envios = enviosRepository.findByFechaEnvio(fechaEnvio);
+            if (envios.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(envios);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        try {
+            Envios existente = serviceEnvios.findById(id);
+            if (existente != null) {
+                serviceEnvios.delete(id);
+                return ResponseEntity.noContent().build(); // 204 No Content
+            } else {
+                return ResponseEntity.notFound().build(); // 404 Not Found
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 500 Internal Server Error
+        }
+    }
+
+
+
+
 }
 
 

@@ -27,4 +27,5 @@ public class ServiceProveedor{
         return ProveedorRepository.save(proveedor);
     }
 
+    public void delete(Long idProveedor) {ProveedorRepository.deleteById(idProveedor);}
 }

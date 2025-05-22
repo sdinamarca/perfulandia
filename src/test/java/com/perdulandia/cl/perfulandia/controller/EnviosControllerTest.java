@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,7 +31,7 @@ public class EnviosControllerTest {
 
         envio = new Envios();
         envio.setIdPedido(1L);
-        envio.setFechaEnvio(new Date());
+        envio.setFechaEnvio(LocalDate.now());
         envio.setNombrePedido("Pedido de prueba");
         envio.setSeguimiento("TRK123456");
         envio.setDireccion("Calle Falsa 123");
@@ -77,7 +78,7 @@ public class EnviosControllerTest {
         when(serviceEnvios.save(any(Envios.class))).thenReturn(envio);
 
         Envios datosActualizados = new Envios();
-        datosActualizados.setFechaEnvio(new Date());
+        datosActualizados.setFechaEnvio(LocalDate.now());
         datosActualizados.setNombrePedido("Pedido actualizado");
         datosActualizados.setSeguimiento("TRK999999");
         datosActualizados.setDireccion("Nueva dirección");
