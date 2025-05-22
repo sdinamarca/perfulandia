@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Entity
-@Table(name = "envio")
+@Table(name = "envios")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,6 +16,7 @@ public class Envios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedido", nullable = false, unique = true)
     private Long idPedido;
 
     @Temporal(TemporalType.DATE)
