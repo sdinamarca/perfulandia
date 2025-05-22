@@ -15,7 +15,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class EnviosControllerTest {
+public class EnviosControllerTest{
 
     @Mock
     private ServiceEnvios serviceEnvios;

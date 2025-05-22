@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 @RestController
 @RequestMapping("/api/v1/envios")
-public class EnviosController {
+public class EnviosController{
 
     @Autowired
     private ServiceEnvios serviceEnvios;
