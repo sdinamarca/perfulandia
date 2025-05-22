@@ -42,13 +42,13 @@ public class EnviosController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Envios> actualizar(@PathVariable Long id, @RequestBody Envios envio) {
+    public ResponseEntity<Envios> actualizar(@PathVariable Long id, @RequestBody Envios envios) {
         try {
             Envios existente = serviceEnvios.findById(id);
-            existente.setFechaEnvio(envio.getFechaEnvio());
-            existente.setNombrePedido(envio.getNombrePedido());
-            existente.setSeguimiento(envio.getSeguimiento());
-            existente.setDireccion(envio.getDireccion());
+            existente.setFechaEnvio(envios.getFechaEnvio());
+            existente.setNombrePedido(envios.getNombrePedido());
+            existente.setSeguimiento(envios.getSeguimiento());
+            existente.setDireccion(envios.getDireccion());
 
             serviceEnvios.save(existente);
             return ResponseEntity.ok(existente);
