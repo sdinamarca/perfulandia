@@ -25,7 +25,4 @@ public class Proveedor{
     @Column(name = "telefono")
     private String telefono;
 
-
-
-
 }
