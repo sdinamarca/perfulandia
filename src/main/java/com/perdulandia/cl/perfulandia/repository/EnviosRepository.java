@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Date;
 
 @Repository
-public interface EnviosRepository extends JpaRepository<Envios, Long> {
+public interface EnviosRepository extends JpaRepository<Envios, Long>{
 
     List<Envios> findByFechaEnvio(Date fechaEnvio);
 
