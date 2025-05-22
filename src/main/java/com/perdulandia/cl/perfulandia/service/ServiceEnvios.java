@@ -16,22 +16,18 @@ public class ServiceEnvios {
     private EnviosRepository enviosRepository;
 
     public List<Envios> findAll(){
-
         return enviosRepository.findAll();
     }
 
     public Envios findById(long idPedido){
-
         return enviosRepository.findById(idPedido).get();
     }
 
     public Envios save(Envios envios) {
-
         return enviosRepository.save(envios);
     }
 
     public void delete(Long idPedidos) {
-
         enviosRepository.deleteById(idPedidos);
     }
 }
