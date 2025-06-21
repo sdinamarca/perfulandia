@@ -27,7 +27,7 @@ public class Pedidoproveedor {
     private LocalDate fechaPedido;
 
     @ManyToOne
-    @JoinColumn(name = "idProvedor", nullable = false)
+    @JoinColumn(name = "idProveedor", nullable = false)
     private Proveedor proveedor;
 
 }
