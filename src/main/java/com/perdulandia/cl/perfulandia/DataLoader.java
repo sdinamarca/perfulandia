@@ -26,7 +26,7 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Faker faker = new Faker():
+        Faker faker = new Faker();
         Random random = new Random();
 
 
