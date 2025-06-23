@@ -3,6 +3,12 @@ package com.perdulandia.cl.perfulandia.controller;
 import com.perdulandia.cl.perfulandia.model.Envios;
 import com.perdulandia.cl.perfulandia.model.Pedidoproveedor;
 import com.perdulandia.cl.perfulandia.service.ServicePedidoProveedor;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -15,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/pedidos-proveedor")
+@Tag(name = "Pedidos a Proveedor", description = "Operaciones para gestionar pedidos a proveedores")
 public class PedidoController{
 
     @Autowired
@@ -26,6 +33,7 @@ public class PedidoController{
 
     // GET: Listar todos los pedidos de proveedor
     @GetMapping
+    @Operation(summary = "Listar todos los pedidos de proveedor")
     public ResponseEntity<List<Pedidoproveedor>> listar() {
         List<Pedidoproveedor> lista = servicePedidoProveedor.findAll();
         if (lista.isEmpty()) {
@@ -36,6 +44,7 @@ public class PedidoController{
 
     // GET: Buscar por ID
     @GetMapping("/{id}")
+    @Operation(summary = "Buscar un pedido por ID")
     public ResponseEntity<Pedidoproveedor> buscar(@PathVariable Long id) {
         try {
             Pedidoproveedor pedido = servicePedidoProveedor.findById(id);
@@ -47,6 +56,28 @@ public class PedidoController{
 
     // PUT: Actualizar un pedido proveedor
     @PutMapping("/{id}")
+    @Operation(
+            summary = "Actualizar un pedido proveedor",
+            description = "Actualiza un pedido proveedor existente por su ID"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Pedido actualizado exitosamente",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = Pedidoproveedor.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Pedido no encontrado"
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Solicitud inválida"
+            )
+    })
     public ResponseEntity<Pedidoproveedor> actualizar(@PathVariable Long id, @RequestBody Pedidoproveedor datos) {
         try {
             Pedidoproveedor existente = servicePedidoProveedor.findById(id);
@@ -62,7 +93,12 @@ public class PedidoController{
         }
     }
 
+
+
+
+
     @GetMapping("/pedido/fecha/{fechaPedido}")
+    @Operation(summary = "Buscar pedidos por fecha de pedido")
     public ResponseEntity<List<Pedidoproveedor>> buscarPorFechaPedido(
             @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaPedido) {
         try {
