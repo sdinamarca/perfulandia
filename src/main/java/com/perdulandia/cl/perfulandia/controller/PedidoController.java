@@ -1,16 +1,21 @@
 package com.perdulandia.cl.perfulandia.controller;
 
+import com.perdulandia.cl.perfulandia.model.Envios;
 import com.perdulandia.cl.perfulandia.model.Pedidoproveedor;
 import com.perdulandia.cl.perfulandia.service.ServicePedidoProveedor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.perdulandia.cl.perfulandia.repository.PedidoProveedorRepository;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/pedidos-proveedor")
-public class PedidoController {
+public class PedidoController{
 
     @Autowired
     private ServicePedidoProveedor servicePedidoProveedor;
@@ -57,14 +62,21 @@ public class PedidoController {
         }
     }
 
-    @GetMapping("/{numPedido}")
-    public ResponseEntity<Pedidoproveedor> buscarPorNumPedido(@PathVariable String numPedido) {
+    @GetMapping("/pedido/fecha/{fechaPedido}")
+    public ResponseEntity<List<Pedidoproveedor>> buscarPorFechaPedido(
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaPedido) {
         try {
-            Pedidoproveedor pedido = pedidoProveedorRepository.findByNumPedido(numPedido);
-            return ResponseEntity.ok(pedido);
+            List<Pedidoproveedor> pedidosProveedor = pedidoProveedorRepository.findByFechaPedido(fechaPedido);
+            if (pedidosProveedor.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(pedidosProveedor);
         } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+            // Aquí puedes agregar un logger para registrar el error
+            // logger.error("Error buscando pedidos por fecha: ", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 }
 

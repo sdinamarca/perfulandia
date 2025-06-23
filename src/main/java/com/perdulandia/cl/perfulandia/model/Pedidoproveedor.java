@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedidoproveedor{
+public class Pedidoproveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +24,10 @@ public class Pedidoproveedor{
     private String numPedido;
 
     @Column(name = "fecha_pedido", nullable = false)
-    private Date fechaPedido;
+    private LocalDate fechaPedido;
 
     @ManyToOne
-    @JoinColumn(name = "idProvedor", nullable = false)
+    @JoinColumn(name = "idProveedor", nullable = false)
     private Proveedor proveedor;
 
 }
