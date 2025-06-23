@@ -9,7 +9,8 @@ import com.perdulandia.cl.perfulandia.service.ServiceEnvios;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public class ServiceEnviosTest {
     @Autowired
     private ServiceEnvios serviceenvio;
 
-    @MockitoBean
+    @MockBean
     private EnviosRepository enviosRepository;
 
     //test que prueba encontrar todos los envios existentes

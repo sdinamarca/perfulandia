@@ -11,7 +11,7 @@ import com.perdulandia.cl.perfulandia.service.ServicePedidoProveedor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 
 import java.time.LocalDate;
@@ -24,7 +24,7 @@ public class ServicePedidoProveedorTest {
     @Autowired
     private ServicePedidoProveedor service;
 
-    @MockitoBean
+    @MockBean
     private PedidoProveedorRepository pPRepository;
 
     // Simula un proveedor para los tests
