@@ -12,8 +12,6 @@ import java.util.List;
 @Transactional
 public class ServicePedidoProveedor{
 
-
-
     @Autowired
     private PedidoProveedorRepository pPRepository;
 
@@ -22,7 +20,7 @@ public class ServicePedidoProveedor{
     }
 
     public Pedidoproveedor findById(long id){
-        return pPRepository.findById(id).get();
+        return pPRepository.findById(id);
     }
 
     public Pedidoproveedor save(Pedidoproveedor pproveedor) {
