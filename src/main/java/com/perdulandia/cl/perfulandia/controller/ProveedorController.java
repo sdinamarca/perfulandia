@@ -12,7 +12,6 @@ import java.util.List;
 @RequestMapping("/api/v1/proveedores")
 public class ProveedorController{
 
-
     @Autowired
     private ProveedorRepository proveedorRepository;
 

@@ -11,6 +11,7 @@ import java.util.Date;
 public interface EnviosRepository extends JpaRepository<Envios, Long>  {
 
 
+
     List<Envios> findByFechaEnvio(LocalDate fechaEnvio);
 
 }

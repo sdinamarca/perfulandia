@@ -13,6 +13,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Pedidoproveedor {
 
 
