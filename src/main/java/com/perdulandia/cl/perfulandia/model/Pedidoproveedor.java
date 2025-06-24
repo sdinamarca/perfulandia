@@ -15,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Pedidoproveedor {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
