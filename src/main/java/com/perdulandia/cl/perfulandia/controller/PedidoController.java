@@ -24,6 +24,7 @@ import java.util.List;
 @Tag(name = "Pedidos a Proveedor", description = "Operaciones para gestionar pedidos a proveedores")
 public class PedidoController{
 
+
     @Autowired
     private ServicePedidoProveedor servicePedidoProveedor;
 
@@ -69,7 +70,6 @@ public class PedidoController{
                             schema = @Schema(implementation = Pedidoproveedor.class)
                     )
             ),
-
             @ApiResponse(
                     responseCode = "404",
                     description = "Pedido no encontrado"

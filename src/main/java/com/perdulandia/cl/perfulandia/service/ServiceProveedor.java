@@ -12,6 +12,7 @@ import java.util.List;
 @Transactional
 public class ServiceProveedor{
 
+
     @Autowired
     private ProveedorRepository ProveedorRepository;
 

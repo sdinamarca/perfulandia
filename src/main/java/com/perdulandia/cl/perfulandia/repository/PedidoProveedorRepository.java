@@ -12,4 +12,5 @@ public interface PedidoProveedorRepository extends JpaRepository<Pedidoproveedor
 
     List<Pedidoproveedor> findByFechaPedido(LocalDate fechaPedido);
 
+
 }
